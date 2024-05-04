@@ -1,17 +1,14 @@
-# Python3 program to create target string, starting from
-# random string using Genetic Algorithm
-
 import random
 
 # Number of individuals in each generation
-POPULATION_SIZE = 10000
+POPULATION_SIZE = 100000
 
 # Valid genes
 GENES = '''abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP 
 QRSTUVWXYZ 1234567890, .-;:_!"#%&/()=?@${[]}'''
 
 # Target string to be generated
-TARGET = "What the fuck did you just fucking say about me, you little bitch?"
+TARGET = "Introduction To AI is the greatest module ever!"
 
 
 class Individual(object):
@@ -58,17 +55,17 @@ class Individual(object):
             if prob < 0.45:
                 child_chromosome.append(gp1)
 
-                # if prob is between 0.45 and 0.90, insert
+            # if prob is between 0.45 and 0.90, insert
             # gene from parent 2
             elif prob < 0.90:
                 child_chromosome.append(gp2)
 
-                # otherwise insert random gene(mutate),
+            # otherwise insert random gene(mutate),
             # for maintaining diversity
             else:
                 child_chromosome.append(self.mutated_genes())
 
-                # create new Individual(offspring) using
+        # create new Individual(offspring) using
         # generated chromosome for offspring
         return Individual(child_chromosome)
 
@@ -83,8 +80,6 @@ class Individual(object):
         for gs, gt in zip(self.chromosome, TARGET):
             if gs != gt: fitness += 1
         return fitness
-
-    # Driver code
 
 
 def main():
